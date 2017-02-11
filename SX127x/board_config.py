@@ -20,7 +20,7 @@
 # <http://www.gnu.org/licenses/>.
 
 
-import RPi.GPIO as GPIO
+import Adafruit_BBIO.GPIO as GPIO
 import spidev
 
 import time
@@ -30,13 +30,14 @@ class BOARD:
     """ Board initialisation/teardown and pin configuration is kept here.
         This is the Raspberry Pi board with one LED and a modtronix inAir9B
     """
-    # Note that the BCOM numbering for the GPIOs is used.
-    DIO0 = 22   # RaspPi GPIO 22
-    DIO1 = 23   # RaspPi GPIO 23
-    DIO2 = 24   # RaspPi GPIO 24
-    DIO3 = 25   # RaspPi GPIO 25
-    LED  = 18   # RaspPi GPIO 18 connects to the LED on the proto shield
-    SWITCH = 4  # RaspPi GPIO 4 connects to a switch
+    DIO0 = "GPIO_60"   # BB GPIO 22 in
+    DIO1 = "GPIO_48"   # BB GPIO 23 in
+    DIO2 = "GPIO_49"   # BB GPIO 24 in
+    DIO3 = "GPIO_60"   # BB GPIO 25 in
+    #DIO4 = "GPIO_117"   # These not added incode yet no need now
+    #DIO5 = "GPIO_115"   # These not added incode yet no need now
+    LED  = "GPIO_112"   # GPIO 18 connects to the LED on the proto shield
+    SWITCH = "GPIO_20"  # GPIO 4 connects to a switch in
 
     # The spi object is kept here
     spi = None
@@ -46,14 +47,14 @@ class BOARD:
         """ Configure the Raspberry GPIOs
         :rtype : None
         """
-        GPIO.setmode(GPIO.BCM)
+        #GPIO.setmode(GPIO.BCM)
         # LED
         GPIO.setup(BOARD.LED, GPIO.OUT)
         GPIO.output(BOARD.LED, 0)
         # switch
         GPIO.setup(BOARD.SWITCH, GPIO.IN, pull_up_down=GPIO.PUD_DOWN) 
         # DIOx
-        for gpio_pin in [BOARD.DIO0, BOARD.DIO1, BOARD.DIO2, BOARD.DIO3]:
+        for gpio_pin in [BOARD.DIO0, BOARD.DIO1, BOARD.DIO2, BOARD.DIO3]:#, BOARD.DIO4,, BOARD.DIO5]:
             GPIO.setup(gpio_pin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
         # blink 2 times to signal the board is set up
         BOARD.blink(.1, 2)
