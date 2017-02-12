@@ -30,12 +30,12 @@ class BOARD:
     """ Board initialisation/teardown and pin configuration is kept here.
         This is the Raspberry Pi board with one LED and a modtronix inAir9B
     """
-    DIO0 = "GPIO_60"   # BB GPIO 22 in
-    DIO1 = "GPIO_48"   # BB GPIO 23 in
-    DIO2 = "GPIO_49"   # BB GPIO 24 in
-    DIO3 = "GPIO_60"   # BB GPIO 25 in
-    #DIO4 = "GPIO_117"   # These not added incode yet no need now
-    #DIO5 = "GPIO_115"   # These not added incode yet no need now
+    DIO0 = "GPIO_60"   # BB GPIO 60 in
+    DIO1 = "GPIO_48"   # BB GPIO 48 in
+    DIO2 = "GPIO_49"   # BB GPIO 49 in
+    DIO3 = "GPIO_117"   # BB GPIO 117 in
+    #DIO4 = ""   # These not added incode yet no need now
+    #DIO5 = ""   # These not added incode yet no need now
     LED  = "GPIO_112"   # GPIO 18 connects to the LED on the proto shield
     SWITCH = "GPIO_20"  # GPIO 4 connects to a switch in
 
