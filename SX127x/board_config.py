@@ -21,7 +21,7 @@
 
 
 import Adafruit_BBIO.GPIO as GPIO
-import Adafruit_BBIO.GPIO as spidev
+import spidev
 
 import time
 
