@@ -66,7 +66,7 @@ class BOARD:
         BOARD.spi.close()
 
     @staticmethod
-    def SpiDev(spi_bus=0, spi_cs=0):
+    def SpiDev(spi_bus=1, spi_cs=0):
         """ Init and return the SpiDev object
         :return: SpiDev object
         :param spi_bus: The RPi SPI bus to use: 0 or 1
