@@ -49,7 +49,7 @@ class BOARD:
         """
         #GPIO.setmode(GPIO.BCM)
         # LED
-        GPIO.setup(BOARD.LED, GPIO.OUT)
+        GPIO.setup("GPIO_112" , GPIO.OUT)
         GPIO.output(BOARD.LED, 0)
         # switch
         GPIO.setup(BOARD.SWITCH, GPIO.IN, pull_up_down=GPIO.PUD_DOWN) 
