@@ -36,7 +36,6 @@ RUN_ONE = 1
 BOARD.setup()
 
 parser = LoRaArgumentParser("Continous LoRa receiver.")
-lora = LoRaRcvCont(verbose=False)
 
 
 class LoRaRcvCont(LoRa):
@@ -105,9 +104,9 @@ class LoRaRcvCont(LoRa):
    #         status = self.get_modem_status()
     #        sys.stdout.flush()
      #       sys.stdout.write("\r%d %d %d" % (rssi_value, status['rx_ongoing'], status['modem_clear']))
-
+lora = LoRaRcvCont(verbose=False)
 def setuplora():
-    
+
     
     
     
