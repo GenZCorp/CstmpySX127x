@@ -21,12 +21,18 @@
 # You should have received a copy of the GNU General Public License along with pySX127.  If not, see
 # <http://www.gnu.org/licenses/>.
 
-
+import datetime
 from time import sleep
 from SX127x.LoRa import *
 from SX127x.LoRaArgumentParser import LoRaArgumentParser
 from SX127x.board_config import BOARD
+import threegshieldsetup as tgsetup
+import sms_shield as sms
+import tgdataupload as cloud
 
+USE_SMS = 0
+NETWORK_KEY = 0x23
+RUN_ONE = 1
 BOARD.setup()
 
 parser = LoRaArgumentParser("Continous LoRa receiver.")
@@ -42,7 +48,18 @@ class LoRaRcvCont(LoRa):
         BOARD.led_on()
         print("\nRxDone")
         self.clear_irq_flags(RxDone=1)
-        payload = self.read_payload(nocheck=True)
+        payload = self.read_payload(nocheck=True) #append data to file
+        if bytes(payload[0])== NETWORK_KEY:
+            if(RUN_ONE==1)
+                file = open(“wsndata.txt”,”a”) 
+                file.write("::::\n" + starttime + "\n") 
+                file.close()
+                RUN_ONE=0
+            file = open(“wsndata.txt”,”a”) 
+            file.write(payload[1:]+"\n")
+            file.close()
+        else 
+            print("Disregarding received data")
         print(bytes(payload).decode())
         self.set_mode(MODE.SLEEP)
         self.reset_ptr_rx()
@@ -76,43 +93,50 @@ class LoRaRcvCont(LoRa):
     def start(self):
         self.reset_ptr_rx()
         self.set_mode(MODE.RXCONT)
-        while True:
-            sleep(.5)
-            rssi_value = self.get_rssi_value()
-            status = self.get_modem_status()
-            sys.stdout.flush()
-            sys.stdout.write("\r%d %d %d" % (rssi_value, status['rx_ongoing'], status['modem_clear']))
+        while (self.get_mode() == MODE.RXCONT):
+           currtime = datetime.datetime.now()
+           c = starttime - currtime
+           if(divmod(c.days * 86400 + c.seconds, 60)[0]==5)
+                self.set_mode(MODE.SLEEP)
+                break
 
+  #          rssi_value = self.get_rssi_value()
+   #         status = self.get_modem_status()
+    #        sys.stdout.flush()
+     #       sys.stdout.write("\r%d %d %d" % (rssi_value, status['rx_ongoing'], status['modem_clear']))
 
-lora = LoRaRcvCont(verbose=False)
-args = parser.parse_args(lora)
+def setuplora():
+    
+    lora = LoRaRcvCont(verbose=False)
+    args = parser.parse_args(lora)
 
-lora.set_mode(MODE.STDBY)
-lora.set_pa_config(pa_select=1)
-#lora.set_rx_crc(True)
-#lora.set_coding_rate(CODING_RATE.CR4_6)
-#lora.set_pa_config(max_power=0, output_power=0)
-#lora.set_lna_gain(GAIN.G1)
-#lora.set_implicit_header_mode(False)
-#lora.set_low_data_rate_optim(True)
-#lora.set_pa_ramp(PA_RAMP.RAMP_50_us)
-#lora.set_agc_auto_on(True)
+    lora.set_mode(MODE.STDBY)
+    lora.set_pa_config(pa_select=1)
+    #lora.set_rx_crc(True)
+    #lora.set_coding_rate(CODING_RATE.CR4_6)
+    #lora.set_pa_config(max_power=0, output_power=0)
+    #lora.set_lna_gain(GAIN.G1)
+    #lora.set_implicit_header_mode(False)
+    #lora.set_low_data_rate_optim(True)
+    #lora.set_pa_ramp(PA_RAMP.RAMP_50_us)
+    #lora.set_agc_auto_on(True)
 
-print(lora)
-assert(lora.get_agc_auto_on() == 1)
+    # print(lora)
+    assert(lora.get_agc_auto_on() == 1)
 
-try: input("Press enter to start...")
-except: pass
+#try: input("Press enter to start...")
+#except: pass
 
-try:
+def runlora():
+    starttime = datetime.datetime.now()
     lora.start()
-except KeyboardInterrupt:
-    sys.stdout.flush()
-    print("")
-    sys.stderr.write("KeyboardInterrupt\n")
-finally:
-    sys.stdout.flush()
-    print("")
-    lora.set_mode(MODE.SLEEP)
-    print(lora)
+    if USE_SMS:
+        tgsetup.powerup()
+        sms.sendtext()
+        tgsetup.powerdown()
+    else:
+         tgsetup.powerup()
+         cloud.threegupload()
+         tgsetup.powerdown()
     BOARD.teardown()
+
