@@ -9,20 +9,20 @@ def threegupload():
     urllib.urlopen('https://api.thingspeak.com/update?api_key=TWLSAPS8KORLDE1I&field2='+implier)
     urllib.urlopen('https://api.thingspeak.com/update?api_key=TWLSAPS8KORLDE1I&field3='+loc1)
     urllib.urlopen('https://api.thingspeak.com/update?api_key=TWLSAPS8KORLDE1I&field4='+loc2)
-    if(sensor1data ~= -1):
+    if(sensor1data != -1):
         urllib.urlopen('https://api.thingspeak.com/update?api_key=2T4XCPR0G1SRDCBG&field1='+sensor1data)
-    if(sensor2data ~= -1):
+    if(sensor2data != -1):
         urllib.urlopen('https://api.thingspeak.com/update?api_key=2T4XCPR0G1SRDCBG&field2='+sensor2data)
-    if(sensor3data ~= -1):
+    if(sensor3data != -1):
         urllib.urlopen('https://api.thingspeak.com/update?api_key=2T4XCPR0G1SRDCBG&field3='+sensor3data)
-    if(sensor4data ~= -1):
+    if(sensor4data != -1):
         urllib.urlopen('https://api.thingspeak.com/update?api_key=2T4XCPR0G1SRDCBG&field4='+sensor4data)
-    if(sensor5data ~= -1):
+    if(sensor5data != -1):
         urllib.urlopen('https://api.thingspeak.com/update?api_key=2T4XCPR0G1SRDCBG&field5='+sensor5data)
-    if(sensor6data ~= -1):
+    if(sensor6data != -1):
         urllib.urlopen('https://api.thingspeak.com/update?api_key=2T4XCPR0G1SRDCBG&field6='+sensor6data)
-    if(sensor7data ~= -1):
+    if(sensor7data != -1):
         urllib.urlopen('https://api.thingspeak.com/update?api_key=2T4XCPR0G1SRDCBG&field7='+sensor7data)
-    if(sensor8data ~= -1):
+    if(sensor8data != -1):
         urllib.urlopen('https://api.thingspeak.com/update?api_key=2T4XCPR0G1SRDCBG&field8='+sensor8data
 

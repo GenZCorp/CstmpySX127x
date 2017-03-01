@@ -10,14 +10,14 @@ GPIO.output(KEY,1)
 
 
 def powerup():
-    while(GPIO.input(PS)~=1):
+    while(GPIO.input(PS)!=1):
         GPIO.output(KEY,0)
         time.sleep(5)
         GPIO.output(KEY,1)
 
 
 def powerdown():
-    while(GPIO.input(PS)~=0):
+    while(GPIO.input(PS)!=0):
         GPIO.output(KEY,0)
         time.sleep(5)
         GPIO.output(KEY,1)
