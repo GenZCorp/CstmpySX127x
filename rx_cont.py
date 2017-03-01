@@ -36,6 +36,7 @@ RUN_ONE = 1
 BOARD.setup()
 
 parser = LoRaArgumentParser("Continous LoRa receiver.")
+lora = LoRaRcvCont(verbose=False)
 
 
 class LoRaRcvCont(LoRa):
@@ -107,9 +108,11 @@ class LoRaRcvCont(LoRa):
 
 def setuplora():
     
-    lora = LoRaRcvCont(verbose=False)
+    
+    
+    
     args = parser.parse_args(lora)
-
+    
     lora.set_mode(MODE.STDBY)
     lora.set_pa_config(pa_select=1)
     lora.set_spreading_factor(12)
