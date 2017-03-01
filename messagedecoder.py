@@ -1,4 +1,4 @@
-def msgdecoder(message)
+def msgdecoder(message='')
     nodeid = message[0]
     changedvalues = message[1]
     gps1 = message[2]
