@@ -25,4 +25,4 @@ def threegupload():
         urllib.urlopen('https://api.thingspeak.com/update?api_key=2T4XCPR0G1SRDCBG&field7='+sensor7data)
     if(sensor8data != -1):
         urllib.urlopen('https://api.thingspeak.com/update?api_key=2T4XCPR0G1SRDCBG&field8='+sensor8data)
-end
+        
