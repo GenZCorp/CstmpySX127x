@@ -35,7 +35,7 @@ NETWORK_KEY = 0x23
 RUN_ONE = 1
 BOARD.setup()
 
-starttime = 0
+starttime = datetime.datetime.now()
 parser = LoRaArgumentParser("Continous LoRa receiver.")
 
 
