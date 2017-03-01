@@ -50,11 +50,7 @@ class LoRaRcvCont(LoRa):
         self.clear_irq_flags(RxDone=1)
         payload = self.read_payload(nocheck=True) #append data to file
         if bytes(payload[0])== NETWORK_KEY:
-<<<<<<< HEAD
             if(RUN_ONE==1):
-=======
-            if(RUN_ONE==1)
->>>>>>> 75c81a26b61a0ffc24d28fb0289aace9fc25e2f7
                 file = open(“wsndata.txt”,”a”) 
                 file.write("::::\n" + starttime + "\n") 
                 file.close()
