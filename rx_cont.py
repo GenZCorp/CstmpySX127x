@@ -51,14 +51,14 @@ class LoRaRcvCont(LoRa):
         payload = self.read_payload(nocheck=True) #append data to file
         if bytes(payload[0])== NETWORK_KEY:
             if(RUN_ONE==1):
-                myfile = open(“wsndata.txt”,”a”) 
+                myfile = open('wsndata.txt','a') 
                 myfile.write("::::\n" + starttime + "\n") 
                 myfile.close()
                 RUN_ONE=0
-            myfile = open(“wsndata.txt”,”a”) 
-            myfile.write(bytes(payload[1:]).decode()+"\n")
+            myfile = open('wsndata.txt','a') 
+            myfile.write(payload[1:]+"\n")
             myfile.close()
-        else 
+        else:
             print("Disregarding received data")
         print(bytes(payload).decode())
         self.set_mode(MODE.SLEEP)
@@ -96,7 +96,7 @@ class LoRaRcvCont(LoRa):
         while (self.get_mode() == MODE.RXCONT):
            currtime = datetime.datetime.now()
            c = starttime - currtime
-           if(divmod(c.days * 86400 + c.seconds, 60)[0]==5)
+           if(divmod(c.days * 86400 + c.seconds, 60)[0]==5):
                 self.set_mode(MODE.SLEEP)
                 break
 
