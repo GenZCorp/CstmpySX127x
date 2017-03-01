@@ -4,7 +4,8 @@ def msgdecoder(message):
     gps1 = message[2]
     gps2 = message[3] 
     i = 4
-    moisture = -1,ph = -1,nit = -1,pho=-1,pot = -1,disso2 = -1,bat1 = -1, bat2 = -1
+    moisture = -1
+    ph = -1,nit = -1,pho=-1,pot = -1,disso2 = -1,bat1 = -1, bat2 = -1
     if((changedvalues)&(0x01)== 0x01):
         moisture = data[i]
         i+=1
