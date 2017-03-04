@@ -31,7 +31,7 @@ import sms_shield as sms
 import tgdataupload as cloud
 
 USE_SMS = 0
-NETWORK_KEY = 35
+#NETWORK_KEY = 35
 RUN_ONE = 1
 BOARD.setup()
 
