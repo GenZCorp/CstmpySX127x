@@ -46,6 +46,7 @@ class LoRaRcvCont(LoRa):
         self.set_dio_mapping([0] * 6)
 
     def on_rx_done(self):
+        global RUN_ONE
         BOARD.led_on()
         print("\nRxDone")
         self.clear_irq_flags(RxDone=1)
@@ -56,7 +57,6 @@ class LoRaRcvCont(LoRa):
                 myfile = open('wsndata.txt','a') 
                 myfile.write("::::\n" + starttime + "\n") 
                 myfile.close()
-                global RUN_ONE
                 RUN_ONE = 0
             myfile = open('wsndata.txt','a') 
             myfile.write(payload[1:]+"\n")
