@@ -56,7 +56,7 @@ class LoRaRcvCont(LoRa):
                 myfile = open('wsndata.txt','a') 
                 myfile.write("::::\n" + starttime + "\n") 
                 myfile.close()
-                RUN_ONE=0
+                global RUN_ONE = 0
             myfile = open('wsndata.txt','a') 
             myfile.write(payload[1:]+"\n")
             myfile.close()
