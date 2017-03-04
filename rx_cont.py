@@ -31,7 +31,7 @@ import sms_shield as sms
 import tgdataupload as cloud
 
 USE_SMS = 0
-#NETWORK_KEY = 35
+NETWORK_KEY = 35
 RUN_ONE = 1
 BOARD.setup()
 
@@ -136,6 +136,7 @@ def setuplora():
 def runlora():
     starttime = datetime.datetime.now()
     lora.start()
+    print (bytes(RUN_ONE))
     if USE_SMS:
         tgsetup.powerup()
         sms.sendtext()
