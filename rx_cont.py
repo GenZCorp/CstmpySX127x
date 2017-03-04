@@ -135,8 +135,8 @@ def setuplora():
 
 def runlora():
     starttime = datetime.datetime.now()
-    lora.start()
     print (bytes(RUN_ONE))
+    lora.start()
     if USE_SMS:
         tgsetup.powerup()
         sms.sendtext()
