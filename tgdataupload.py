@@ -3,7 +3,9 @@ import urllib
 import messagedecoder as mydecoder
 
 def threegupload():
+    print("In upload data")
     message = rdr.msgpktformer()
+    print(bytes(message))
     (tag,implier,loc1,loc2,sensor1data,sensor2data,sensor3data,sensor4data,sensor5data,sensor6data,sensor7data,sensor8data) = mydecoder.msgdecoder()
     urllib.urlopen('https://api.thingspeak.com/update?api_key=TWLSAPS8KORLDE1I&field1='+tag)
     urllib.urlopen('https://api.thingspeak.com/update?api_key=TWLSAPS8KORLDE1I&field2='+implier)

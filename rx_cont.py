@@ -133,13 +133,16 @@ def setuplora():
 
 def runlora():
     starttime = datetime.datetime.now()
-    lora.start() #to run below I need to exit this :D I suck
+    lora.start()
+    print("after lora start")
     if USE_SMS:
         tgsetup.powerup()
+        print("sending txt")
         sms.sendtext()
         tgsetup.powerdown()
     else:
          tgsetup.powerup()
+         print("uploading to cloud")
          cloud.threegupload()
          tgsetup.powerdown()
     BOARD.teardown()
