@@ -99,6 +99,7 @@ class LoRaRcvCont(LoRa):
         while (self.get_mode() == MODE.RXCONT):
            currtime = datetime.datetime.now()
            c = starttime - currtime
+           print(bytes(divmod(c.days * 86400 + c.seconds, 60)[1]))
            if(divmod(c.days * 86400 + c.seconds, 60)[1]==10):
                 self.set_mode(MODE.SLEEP)
                 break
