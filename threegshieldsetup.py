@@ -14,7 +14,7 @@ def powerup():
     while(GPIO.input(PS)!=1):
         GPIO.output(KEY,0)
         print("delay begin")
-        time.sleep(0.0833)
+        time.sleep(5)
         print("delay end")
         GPIO.output(KEY,1)
         print(bytes(GPIO.input(PS)))
@@ -25,7 +25,7 @@ def powerdown():
     while(GPIO.input(PS)!=0):
         GPIO.output(KEY,0)
         print("down delay begin")
-        time.sleep(0.0833)
+        time.sleep(5)
         print("down delay begin")
         GPIO.output(KEY,1)
 
