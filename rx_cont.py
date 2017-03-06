@@ -99,7 +99,7 @@ class LoRaRcvCont(LoRa):
         while (self.get_mode() == MODE.RXCONT):
            currtime = datetime.datetime.now()
            c = starttime - currtime
-           if(divmod(c.days * 86400 + c.seconds, 60)[0]==5):
+           if(divmod(c.days * 86400 + c.seconds, 60)[0]==1):
                 self.set_mode(MODE.SLEEP)
                 break
 
@@ -136,8 +136,7 @@ def setuplora():
 
 def runlora():
     starttime = datetime.datetime.now()
-    print (bytes(RUN_ONE))
-    lora.start()
+    lora.start() #to run below I need to exit this :D I suck
     if USE_SMS:
         tgsetup.powerup()
         sms.sendtext()
