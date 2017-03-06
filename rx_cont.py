@@ -109,11 +109,7 @@ class LoRaRcvCont(LoRa):
      #       sys.stdout.write("\r%d %d %d" % (rssi_value, status['rx_ongoing'], status['modem_clear']))
 lora = LoRaRcvCont(verbose=False)
 
-def setuplora():
-
-    
-    
-    
+def setuplora(): 
     args = parser.parse_args(lora)
     
     lora.set_mode(MODE.STDBY)
