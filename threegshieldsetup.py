@@ -23,6 +23,10 @@ def powerup():
         else:
             print("LOW")
         GPIO.output(KEY,1)
+        if(GPIO.input(PS)):
+            print("WNET HIGH")
+        else:
+            print("WENT LOW")
         i+=1
 
 def powerdown():
