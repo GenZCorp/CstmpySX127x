@@ -10,5 +10,5 @@ def msgpktformer():
             for mynum,myline in enumerate(myfile,1):
                 if mynum > linenum:
                     message+=myline
-    file.close()
+    myfile.close()
     return message
