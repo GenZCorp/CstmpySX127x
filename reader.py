@@ -1,6 +1,6 @@
 def msgpktformer():
     linenum = -1
-    message = ""
+    message = ''
 
     with open('wsndata.txt','r') as myfile:
         for num,line in enumerate(myfile,1):
