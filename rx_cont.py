@@ -100,7 +100,7 @@ class LoRaRcvCont(LoRa):
            currtime = datetime.datetime.now()
            c = starttime - currtime
            print(bytes(divmod(c.days * 86400 + c.seconds, 60)[1]))
-           if(divmod(c.days * 86400 + c.seconds, 60)[1]==10):
+           if((60-divmod(c.days * 86400 + c.seconds, 60)[1])==10):
                 self.set_mode(MODE.SLEEP)
                 break
 
@@ -137,6 +137,7 @@ def runlora():
     print("after lora start")
     if USE_SMS:
         tgsetup.powerup()
+
         print("sending txt")
         sms.sendtext()
         tgsetup.powerdown()
