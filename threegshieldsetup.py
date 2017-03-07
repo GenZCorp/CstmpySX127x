@@ -1,8 +1,8 @@
 import Adafruit_BBIO.GPIO as GPIO
 import time
 
-KEY = "P8_15" # BB GPIO 66 in
-PS =  "P8_17" # BB GPIO 69 in
+KEY = "P8_15" # BB GPIO 47 in
+PS =  "P8_17" # BB GPIO 27 in
 i = 0
 GPIO.setup(KEY,GPIO.OUT)
 GPIO.setup(PS,GPIO.IN)
