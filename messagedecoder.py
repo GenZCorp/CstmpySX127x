@@ -1,5 +1,5 @@
 def msgdecoder(message):
-    if(len(message)>0):
+    if(len(message)>0): # make this read multiple packets as message will include multiple reaeived data string catenated back to back
         nodeid = message[0]
         changedvalues = message[1]
         gps1 = message[2]
