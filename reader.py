@@ -10,7 +10,7 @@ def msgpktformer():
         if (linenum!= -1):
             for mynum,myline in enumerate(myfile,1):
                 if mynum > (linenum+1): #+1 bcz time also takes a line slot
-                    message+=myline
+                    message = ''.join((message,myline))
     print("message from last acquire:"+message)
     myfile.close()
     return message
