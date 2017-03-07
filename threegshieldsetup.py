@@ -7,12 +7,13 @@ i = 0
 GPIO.setup(KEY,GPIO.OUT)
 GPIO.setup(PS,GPIO.IN)
 GPIO.output(KEY,1)
-
+isup = GPIO.input(PS)
 
 def powerup():
     print("3g power up")
+    global isup
     global i
-    while(~(GPIO.input(PS))):
+    while(~isup):
         print(bytes(i))
         GPIO.output(KEY,0)
         print("delay begin")
@@ -23,10 +24,8 @@ def powerup():
         else:
             print("LOW")
         GPIO.output(KEY,1)
-        if(GPIO.input(PS)):
-            print("WNET HIGH")
-        else:
-            print("WENT LOW")
+        isup = GPIO.input(PS)
+        print(bytes(isup))
         i+=1
 
 def powerdown():
