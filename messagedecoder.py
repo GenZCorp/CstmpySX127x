@@ -37,6 +37,6 @@ def msgdecoder(message):
         if((changedvalues)&(0x80)== 0x80):
             bat2 = data[i]
             i+=1
-        return (nodeid,changedvalues,gps1,gps2,moisture,ph,nit,pho,pot,disso2,bat1,bat2)
     else:
         print("Message not acquired by reader")
+    return (nodeid,changedvalues,gps1,gps2,moisture,ph,nit,pho,pot,disso2,bat1,bat2)
