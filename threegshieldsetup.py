@@ -13,7 +13,7 @@ def powerup():
     print("3g power up")
     global isup
     global i
-    while(~isup):
+    while(isup==0):
         print(bytes(i))
         GPIO.output(KEY,0)
         print("delay begin")
