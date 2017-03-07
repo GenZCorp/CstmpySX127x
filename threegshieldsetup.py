@@ -12,7 +12,7 @@ GPIO.output(KEY,1)
 def powerup():
     print("3g power up")
     global i
-    while(!(GPIO.input(PS))):
+    while(~(GPIO.input(PS))):
         print(bytes(i))
         GPIO.output(KEY,0)
         print("delay begin")
