@@ -1,10 +1,9 @@
 def msgdecoder(message):
     if(len(message)>0): # make this read multiple packets as message will include multiple reaeived data string catenated back to back
-        nodeid = message[0]
-        changedvalues = message[1]
-        gps1 = message[2]
-        gps2 = message[3] 
-        i = 4
+        nodeid = -1
+        changedvalues = -1
+        gps1 = -1
+        gps2 = -1 
         moisture = -1
         ph = -1
         nit = -1
@@ -13,6 +12,11 @@ def msgdecoder(message):
         disso2 = -1
         bat1 = -1
         bat2 = -1
+        nodeid = message[0]
+        changedvalues = message[1]
+        gps1 = message[2]
+        gps2 = message[3]
+        i = 4
         if((changedvalues)&(0x01)== 0x01):
             moisture = data[i]
             i+=1
