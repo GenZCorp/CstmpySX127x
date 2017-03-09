@@ -12,34 +12,36 @@ def msgdecoder(message):
     bat1 = -1
     bat2 = -1
     if(len(message)>0): # make this read multiple packets as message will include multiple reaeived data string catenated back to back
-        nodeid = message[0]
-        changedvalues = message[1]
-        gps1 = message[2]
-        gps2 = message[3]
+        nodeid = int(message[0])
+        changedvalues = int(message[1])
+        gps1 = int(message[2])
+        gps2 = int(message[3])
         i = 4
-        if((changedvalues)&(0x01)== 0x01):
-            moisture = data[i]
+        if((changedvalues)&(1)== 1):
+            print("moisture flag found")
+            moisture = int(data[i])
             i+=1
-        if((changedvalues)&(0x02)== 0x02):
-            ph = data[i]
+        if((changedvalues)&(2)== 2):
+            print("OHHO! flag that shouldnt be found found")
+            ph = int(data[i])
             i+=1
-        if((changedvalues)&(0x04)== 0x04):
-            nit = data[i]
+        if((changedvalues)&(4)== 4):
+            nit = int(data[i])
             i+=1
-        if((changedvalues)&(0x08)== 0x08):
-            pho = data[i]
+        if((changedvalues)&(8)== 8):
+            pho = int(data[i])
             i+=1
-        if((changedvalues)&(0x10)== 0x10):
-            pot = data[i]
+        if((changedvalues)&(16)== 16):
+            pot = int(data[i])
             i+=1
-        if((changedvalues)&(0x20)== 0x20):
-            disso2 = data[i]
+        if((changedvalues)&(32)== 32):
+            disso2 = int(data[i])
             i+=1
-        if((changedvalues)&(0x40)== 0x40):
-            bat1 = data[i]
+        if((changedvalues)&(64)== 64):
+            bat1 = int(data[i])
             i+=1
-        if((changedvalues)&(0x80)== 0x80):
-            bat2 = data[i]
+        if((changedvalues)&(128)== 128):
+            bat2 = int(data[i])
             i+=1
     else:
         print("Message not acquired by reader")
