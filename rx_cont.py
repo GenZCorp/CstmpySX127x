@@ -62,7 +62,7 @@ class LoRaRcvCont(LoRa):
             tempvar  = 1
             for m in payload:
                 myfile.write(bytes(m))
-                if(tempvar < len(payload))
+                if(tempvar < len(payload)):
                     myfile.write(",")
                     tempvar += 1
             myfile.write("\n")
