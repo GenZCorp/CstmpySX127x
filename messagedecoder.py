@@ -27,21 +27,27 @@ def msgdecoder(message):
             ph = int(values[i])
             i+=1
         if((changedvalues)&(4)== 4):
+            print("OHHO! flag that shouldnt be found found nit")
             nit = int(values[i])
             i+=1
         if((changedvalues)&(8)== 8):
+            print("OHHO! flag that shouldnt be found found pho")
             pho = int(values[i])
             i+=1
         if((changedvalues)&(16)== 16):
+            print("OHHO! flag that shouldnt be found found pot")
             pot = int(values[i])
             i+=1
         if((changedvalues)&(32)== 32):
+            print("OHHO! flag that shouldnt be found found dissO2")
             disso2 = int(values[i])
             i+=1
         if((changedvalues)&(64)== 64):
+            print("OHHO! bat1 flag")
             bat1 = int(values[i])
             i+=1
         if((changedvalues)&(128)== 128):
+            print("OHHO! bat2 flag")
             bat2 = int(values[i])
             i+=1
     else:
