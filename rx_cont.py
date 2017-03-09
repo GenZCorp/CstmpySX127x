@@ -59,9 +59,13 @@ class LoRaRcvCont(LoRa):
                 myfile.close()
                 RUN_ONE = 0
             myfile = open('wsndata.txt','a') 
+            tempvar  = 1
             for m in payload:
-                myfile.write(bytes(m)+",")
-            myfile.write(",\n")
+                myfile.write(bytes(m))
+                if(tempvar < len(payload))
+                    myfile.write(",")
+                    tempvar += 1
+            myfile.write("\n")
             myfile.close()
         else:
             print("Disregarding received data")
