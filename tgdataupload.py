@@ -9,7 +9,7 @@ def threegupload():
     print(bytes(message))
     parser = message.split("\n")
     for mydatastring in parser: #url lib is slow also we dont know if this runs once or until all lines read?
-        if(len(mydatastring)>0)
+        if(len(mydatastring)>0):
             (tag,implier,loc1,loc2,sensor1data,sensor2data,sensor3data,sensor4data,sensor5data,sensor6data,sensor7data,sensor8data) = mydecoder.msgdecoder(mydatastring)
             urllib.urlopen('https://api.thingspeak.com/update?api_key=TWLSAPS8KORLDE1I&field1='+bytes(tag))
             time.sleep(0.5)
