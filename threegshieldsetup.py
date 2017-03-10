@@ -28,7 +28,7 @@ def powerdown():
         GPIO.output(KEY,0)
         print("down delay begin")
         time.sleep(5)
-        print("down delay begin")
+        print("down delay end")
         GPIO.output(KEY,1)
         isup = GPIO.input(PS)
 
