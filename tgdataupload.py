@@ -14,6 +14,7 @@ def threegupload():
         datacatstring = ''
         if(len(mydatastring)>0):
             (tag,implier,loc1,loc2,sensor1data,sensor2data,sensor3data,sensor4data,sensor5data,sensor6data,sensor7data,sensor8data) = mydecoder.msgdecoder(mydatastring)
+            time.sleep(0.5)
             urllib.urlopen(channel1url+'&field1='+bytes(tag)+'&field2='+bytes(implier)+'&field3='+bytes(loc1)+'&field4='+bytes(loc2))
             print("tag: "+ bytes(tag))
             #time.sleep(0.5)
@@ -58,4 +59,5 @@ def threegupload():
                 datacatstring += ('&field8='+bytes(sensor8data))
                 print("sensor8data: "+ bytes(sensor8data))
                 #time.sleep(0.5)
+            time.sleep(0.5)
             urllib.urlopen(channel2url+datacatstring)
