@@ -35,7 +35,7 @@ def threegupload():
                 print("sensor2data: "+ bytes(sensor2data))
                 #time.sleep(0.5)
             if(sensor3data != -1):
-               datacatstring += ('&field3='+bytes(sensor3data))
+                datacatstring += ('&field3='+bytes(sensor3data))
                 print("sensor3data: "+ bytes(sensor3data))
                 #time.sleep(0.5)
             if(sensor4data != -1):
