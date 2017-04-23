@@ -30,6 +30,7 @@ import threegshieldsetup as tgsetup
 import sms_shield as sms
 import tgdataupload as cloud
 
+SNUMBER = 0
 USE_SMS = 0
 NETWORK_KEY = 35
 RUN_ONE = 1
@@ -105,7 +106,6 @@ class LoRaRcvCont(LoRa):
         while (self.get_mode() == MODE.RXCONT):
            currtime = datetime.datetime.now()
            c = starttime - currtime
-           print(bytes(divmod(c.days * 86400 + c.seconds, 60)[1]))
            if((60-divmod(c.days * 86400 + c.seconds, 60)[1])==10):
                 self.set_mode(MODE.SLEEP)
                 break
@@ -137,20 +137,20 @@ def setuplora():
 #try: input("Press enter to start...")
 #except: pass
 
-def runlora():
+def runlora(snumber):
     starttime = datetime.datetime.now()
     lora.start()
     print("after lora start")
     if USE_SMS:
         tgsetup.powerup()
-
         print("sending txt")
         sms.sendtext()
         tgsetup.powerdown()
     else:
          tgsetup.powerup()
          print("uploading to cloud")
-         cloud.threegupload()
+         tstamp = datetime.datetime.now()
+         cloud.threegupload(snumber,tstamp)
          tgsetup.powerdown()
     BOARD.teardown()
 
